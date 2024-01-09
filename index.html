@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content type</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      background-color: rgb(16, 16, 255);
+    }
+
+    .container {
+      margin: 0 auto;
+      margin-top: 200px;
+      border-radius: 5px;
+      background-color: #fff;
+      width: 500px;
+      height: 150px;
+    }
+
+    .contents {
+      display: flex;
+      gap: 5px;
+    }
+
+    .btn {
+      border-radius: 2px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    form .first {
+      width: 350px;
+      margin-top: 20px;
+      margin-left: 10px;
+      padding: 10px;
+      border: none;
+      border-left: none;
+      border-bottom: 2px solid black;
+    }
+
+    form .second {
+      padding: 10px;
+    }
+
+    .contents {
+      margin-left: 15px;
+      position: relative;
+    }
+
+    .text {
+      position: absolute;
+      top: 30px;
+      left: 10px;
+    }
+
+    .two-text {
+      opacity: 0;
+    }
+    .one-title {
+      cursor: pointer;
+    }
+
+    .three-text {
+      opacity: 0;
+    }
+
+    .two-title {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .three-title {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form id="tabForm">
+      <input class="first" type="number" placeholder="Enter tab index" value="1">
+      <input class="second" type="submit" value="Change tab">
+    </form>
+    <div class="contents">
+      <div class="positive-content">
+        <h3 class="one-title">POSITIVE</h3>
+        <p class="text one-text">Positive content</p>
+      </div>
+      <div class="negative-content">
+        <h3 class="two-title">NEGATIVE</h3>
+        <p class="text two-text">Negative content</p>
+      </div>
+      <div class="neutral-content">
+        <h3 class="three-title">NEUTRAL</h3>
+        <p class="text three-text">Neutral content</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.querySelector(".first").value = 1;
+    let elInput = document.querySelector(".first");
+    let form = document.getElementById("tabForm");
+    const elOneTitle = document.querySelector(".one-title");
+    const elTwoTitle = document.querySelector(".two-title");
+    const elThreeTitle = document.querySelector(".three-title");
+    const elOneText = document.querySelector(".one-text");
+    const elTwoText = document.querySelector(".two-text");
+    const elThreeText = document.querySelector(".three-text");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let index = parseInt(elInput.value);
+
+      if (index === 1) {
+        one();
+      } else if (index === 2) {
+        two();
+      } else if (index === 3) {
+        three();
+      } else {
+        alert("Index is invalid");
+      }
+    });
+
+    elOneTitle.addEventListener("click", one);
+    elTwoTitle.addEventListener("click", two);
+    elThreeTitle.addEventListener("click", three);
+
+    function one() {
+      elOneText.style.opacity = 1;
+      elTwoText.style.opacity = 0;
+      elThreeText.style.opacity = 0;
+      elOneTitle.style.opacity = 1;
+      elTwoTitle.style.opacity = 0.5;
+      elThreeTitle.style.opacity = 0.5;
+    }
+
+    function two() {
+      elOneText.style.opacity = 0;
+      elTwoText.style.opacity = 1;
+      elThreeText.style.opacity = 0;
+      elOneTitle.style.opacity = 0.5;
+      elTwoTitle.style.opacity = 1;
+      elThreeTitle.style.opacity = 0.5;
+    }
+
+    function three() {
+      elOneText.style.opacity = 0;
+      elTwoText.style.opacity = 0;
+      elThreeText.style.opacity = 1;
+      elOneTitle.style.opacity = 0.5;
+      elTwoTitle.style.opacity = 0.5;
+      elThreeTitle.style.opacity = 1;
+    }
+  </script>
+</body>
+
+</html>
